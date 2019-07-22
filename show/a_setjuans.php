@@ -5,8 +5,8 @@ $str="select * from answer";
 $rs=mysqli_query($conn,$str);
 $row=mysqli_fetch_assoc($rs);
 
-// $time=ceil($row['time']/60);
-$time = $row['time'];
+$time=ceil($row['time']/60);
+// $time = $row['time'];
 $num=$row['jnum']+$row['snum']+$row['cnum']+$row['pnum'];
 $score=$row['jnum']*$row['jscore']+$row['snum']*$row['sscore']+$row['cnum']*$row['cscore']+$row['pnum']*$row['pscore'];
 ?>
