@@ -1,0 +1,26 @@
+<?php
+include('./conn.php');
+
+$id=$_GET['id'];
+
+$strr="select * from ts_chioce where id='$id'";
+$rs=mysqli_query($conn,$strr);
+$row=mysqli_fetch_assoc($rs);
+
+$filename=$row['c_fct'];
+echo $filename;
+if(file_exists($filename))
+{
+    unlink($filename);
+}else {
+    echo "<script>alert('删除失败！');history.back();</script>";exit;
+}
+
+$str="delete from ts_chioce where id='$id'";
+$r=mysqli_query($conn,$str);
+if($r)
+{
+    echo "<script>alert('删除成功！');history.back();</script>";
+}else {
+    echo "<script>alert('删除失败！');history.back();</script>";
+}
